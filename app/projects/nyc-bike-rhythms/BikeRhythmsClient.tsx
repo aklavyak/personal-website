@@ -1,8 +1,9 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useRef } from 'react'
 import ScrollStory from '@/components/projects/nyc-bike-rhythms/ScrollStory'
 import WeekExplorer from '@/components/projects/nyc-bike-rhythms/WeekExplorer'
+import HeroAnimation from '@/components/projects/nyc-bike-rhythms/HeroAnimation'
 import type { StoryMoment, NeighborhoodsGeoJSON, FlowData } from '@/lib/types/citibike'
 
 type BikeRhythmsClientProps = {
@@ -20,14 +21,30 @@ export default function BikeRhythmsClient({
 }: BikeRhythmsClientProps) {
   const [neighborhoods, setNeighborhoods] = useState<NeighborhoodsGeoJSON>(EMPTY_NEIGHBORHOODS)
   const [flows, setFlows] = useState<FlowData | undefined>(undefined)
+  const [shouldLoadMap, setShouldLoadMap] = useState(false)
+  const heroRef = useRef<HTMLElement>(null)
 
   // Scroll to top when page loads (prevents browser scroll restoration)
   useEffect(() => {
     window.scrollTo(0, 0)
   }, [])
 
-  // Load data - preload links in page.tsx start fetch early
+  // Scroll-triggered loading - start loading map data when user scrolls
   useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 100) {
+        setShouldLoadMap(true)
+        window.removeEventListener('scroll', handleScroll)
+      }
+    }
+    window.addEventListener('scroll', handleScroll, { passive: true })
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
+
+  // Load data only when scroll trigger fires
+  useEffect(() => {
+    if (!shouldLoadMap) return
+
     Promise.all([
       fetch('/data/citibike/neighborhoods.json').then(res => res.json()),
       fetch('/data/citibike/flows.json').then(res => res.json())
@@ -37,23 +54,15 @@ export default function BikeRhythmsClient({
         setFlows(flowsData)
       })
       .catch(err => console.error('Failed to load data:', err))
-  }, [])
+  }, [shouldLoadMap])
 
   return (
     <div className="bike-rhythms">
-      {/* Hero with cover visual */}
-      <section className="bike-rhythms-hero">
+      {/* Hero with animated SVG trip visualization - loads instantly */}
+      <section className="bike-rhythms-hero" ref={heroRef}>
         <div className="hero-cover-visual">
           <div className="cover-gradient" />
-          <div className="cover-lines">
-            {[...Array(12)].map((_, i) => (
-              <div key={i} className="cover-line" style={{
-                animationDelay: `${i * 0.2}s`,
-                top: `${15 + i * 6}%`,
-                opacity: 0.15 + (i % 3) * 0.1
-              }} />
-            ))}
-          </div>
+          <HeroAnimation />
           <div className="cover-glow" />
         </div>
         <div className="hero-content-overlay">
