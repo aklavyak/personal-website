@@ -17,13 +17,20 @@ export default function Home() {
 
       <section className="features">
         <div className="container">
+          <div className="section-header">
+            <h2 className="section-title">Projects</h2>
+            <Link href="/projects" className="section-link">View All →</Link>
+          </div>
           <div className="features-grid">
-            <div className="feature-card">
-              <div className="feature-icon">✎</div>
-              <h3>Projects</h3>
-              <p>Explore my work and side projects. Coming soon with detailed case studies and code.</p>
-              <Link href="/projects/" className="feature-link">View Projects →</Link>
-            </div>
+            <Link href="/projects/nyc-bike-rhythms" className="feature-card feature-card-project">
+              <div className="feature-project-visual">
+                <div className="feature-gradient-bg" />
+                <span className="feature-stat">46M</span>
+              </div>
+              <h3>City in Motion</h3>
+              <p>How 46 million Citi Bike trips reveal New York&apos;s hidden rhythms</p>
+              <span className="feature-link">Explore →</span>
+            </Link>
           </div>
         </div>
       </section>

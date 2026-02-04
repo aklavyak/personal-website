@@ -36,3 +36,4 @@ next-env.d.ts
 # Old Eleventy files (can be removed)
 _site/
 goodreads-export.csv
+scripts/citibike/raw/

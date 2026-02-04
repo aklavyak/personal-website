@@ -316,6 +316,7 @@ body {
   border-color: var(--text-primary);
 }
 
+
 /* Features Section - Minimal Dark Design */
 .features {
   padding: 3rem 0;
@@ -335,6 +336,7 @@ body {
   padding: 1.5rem;
   transition: all var(--transition-base);
   position: relative;
+  max-width: 400px;
 }
 
 .feature-card::before {
@@ -1380,4 +1382,1165 @@ body {
 ::selection {
   background: var(--accent-primary);
   color: white;
+}
+
+/* ============================================
+   Projects Section
+   ============================================ */
+
+.projects-section {
+  padding: 4rem 0 6rem;
+  background: var(--prime-black);
+}
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 2rem;
+}
+
+.project-card {
+  padding: 2rem;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 8px;
+  text-decoration: none;
+  transition: all var(--transition-base);
+  display: block;
+}
+
+.project-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.04);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+}
+
+.project-card-title {
+  font-size: 1.5rem;
+  font-weight: 400;
+  margin-bottom: 0.75rem;
+  color: var(--text-primary);
+  letter-spacing: -0.02em;
+}
+
+.project-card-description {
+  color: var(--text-tertiary);
+  margin-bottom: 1.5rem;
+  line-height: 1.6;
+  font-weight: 300;
+  font-size: 0.95rem;
+}
+
+.project-tags {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.project-tag {
+  font-size: 0.75rem;
+  padding: 0.25rem 0.75rem;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 20px;
+  color: var(--text-tertiary);
+  letter-spacing: 0.02em;
+}
+
+/* Featured Project Card */
+.featured-project-card {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  overflow: hidden;
+  text-decoration: none;
+  transition: all var(--transition-base);
+}
+
+.featured-project-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(255, 255, 255, 0.15);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+.featured-project-visual {
+  position: relative;
+  background: linear-gradient(135deg, rgba(255, 149, 0, 0.05) 0%, rgba(155, 89, 182, 0.05) 100%);
+  min-height: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.flow-lines {
+  position: absolute;
+  inset: 0;
+  opacity: 0.8;
+}
+
+.flow-lines svg {
+  width: 100%;
+  height: 100%;
+}
+
+.flow-path {
+  stroke-dasharray: 400;
+  stroke-dashoffset: 400;
+  animation: flowDraw 3s ease-in-out infinite;
+}
+
+.flow-path.delay-1 {
+  animation-delay: 0.5s;
+}
+
+.flow-path.delay-2 {
+  animation-delay: 1s;
+}
+
+@keyframes flowDraw {
+  0% { stroke-dashoffset: 400; }
+  50% { stroke-dashoffset: 0; }
+  100% { stroke-dashoffset: -400; }
+}
+
+.featured-project-stat {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+}
+
+.stat-number {
+  display: block;
+  font-size: 5rem;
+  font-weight: 200;
+  color: var(--text-primary);
+  line-height: 1;
+  letter-spacing: -0.04em;
+}
+
+.stat-label {
+  display: block;
+  font-size: 1rem;
+  color: var(--text-tertiary);
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  margin-top: 0.5rem;
+}
+
+.featured-project-content {
+  padding: 3rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.featured-tag {
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: #FF9500;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.featured-project-title {
+  font-size: 2.5rem;
+  font-weight: 300;
+  color: var(--text-primary);
+  margin-bottom: 1rem;
+  letter-spacing: -0.02em;
+}
+
+.featured-project-description {
+  color: var(--text-tertiary);
+  font-size: 1.05rem;
+  line-height: 1.7;
+  margin-bottom: 1.5rem;
+  font-weight: 300;
+}
+
+.featured-project-content .project-tags {
+  margin-bottom: 2rem;
+}
+
+.featured-cta {
+  font-size: 0.9rem;
+  color: var(--text-primary);
+  font-weight: 400;
+  transition: color var(--transition-fast);
+}
+
+.featured-project-card:hover .featured-cta {
+  color: #FF9500;
+}
+
+@media (max-width: 768px) {
+  .featured-project-card {
+    grid-template-columns: 1fr;
+  }
+
+  .featured-project-visual {
+    min-height: 200px;
+  }
+
+  .stat-number {
+    font-size: 3.5rem;
+  }
+
+  .featured-project-content {
+    padding: 2rem;
+  }
+
+  .featured-project-title {
+    font-size: 2rem;
+  }
+}
+
+/* ============================================
+   Feature Card Project Variant
+   ============================================ */
+
+.feature-card-project {
+  position: relative;
+  overflow: hidden;
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+}
+
+.feature-project-visual {
+  position: relative;
+  height: 80px;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.flow-lines-mini {
+  position: absolute;
+  inset: 0;
+  opacity: 0.7;
+}
+
+.flow-lines-mini svg {
+  width: 100%;
+  height: 100%;
+}
+
+.feature-gradient-bg {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 149, 0, 0.15) 0%,
+    rgba(155, 89, 182, 0.08) 50%,
+    rgba(52, 152, 219, 0.12) 100%
+  );
+  border-radius: 8px;
+}
+
+.feature-stat {
+  font-size: 2.5rem;
+  font-weight: 200;
+  color: var(--text-primary);
+  letter-spacing: -0.03em;
+  position: relative;
+  z-index: 1;
+}
+
+/* ============================================
+   NYC Bike Rhythms Project
+   ============================================ */
+
+:root {
+  --bike-blue: #00A3E0;
+  --bike-morning: #FFB347;
+  --bike-evening: #9B59B6;
+  --bike-weekend: #2ECC71;
+}
+
+.bike-rhythms {
+  background: var(--prime-black);
+  min-height: 100vh;
+}
+
+/* Hero with animated cover visual */
+.bike-rhythms-hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-cover-visual {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+.cover-gradient {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 30% 40%, rgba(255, 149, 0, 0.08) 0%, transparent 50%),
+              radial-gradient(ellipse at 70% 60%, rgba(155, 89, 182, 0.06) 0%, transparent 50%),
+              radial-gradient(ellipse at 50% 80%, rgba(0, 163, 224, 0.05) 0%, transparent 40%);
+}
+
+.cover-lines {
+  position: absolute;
+  inset: 0;
+}
+
+.cover-line {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg,
+    transparent 0%,
+    rgba(255, 149, 0, 0.4) 20%,
+    rgba(155, 89, 182, 0.3) 50%,
+    rgba(0, 163, 224, 0.4) 80%,
+    transparent 100%);
+  animation: flowLine 8s ease-in-out infinite;
+}
+
+@keyframes flowLine {
+  0%, 100% {
+    transform: translateX(-100%) scaleX(0.5);
+    opacity: 0;
+  }
+  10% { opacity: 1; }
+  90% { opacity: 1; }
+  100% {
+    transform: translateX(100%) scaleX(0.5);
+    opacity: 0;
+  }
+}
+
+.cover-glow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 600px;
+  height: 600px;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(circle, rgba(0, 163, 224, 0.03) 0%, transparent 70%);
+  animation: pulse 4s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.5; }
+  50% { transform: translate(-50%, -50%) scale(1.2); opacity: 0.8; }
+}
+
+.hero-content-overlay {
+  position: relative;
+  z-index: 1;
+  padding: 2rem;
+}
+
+.bike-rhythms-eyebrow {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--bike-blue);
+  margin-bottom: 1.5rem;
+  font-weight: 500;
+}
+
+.bike-rhythms-title {
+  font-size: clamp(3.5rem, 8vw, 7rem);
+  font-weight: 200;
+  margin-bottom: 1.5rem;
+  letter-spacing: -0.04em;
+  color: var(--text-primary);
+  line-height: 1;
+}
+
+.bike-rhythms-subtitle {
+  font-size: 1.25rem;
+  color: var(--text-tertiary);
+  font-weight: 300;
+  letter-spacing: 0.01em;
+  max-width: 500px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+.bike-rhythms-scroll-hint {
+  position: absolute;
+  bottom: 3rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--text-tertiary);
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  opacity: 0.6;
+}
+
+.scroll-arrow {
+  animation: bounce 2s infinite;
+  font-size: 1.25rem;
+}
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+  40% { transform: translateY(8px); }
+  60% { transform: translateY(4px); }
+}
+
+/* Week Explorer Section - Final section, exactly 100vh */
+.week-explorer-section {
+  position: relative;
+  z-index: 10;
+  background: var(--prime-black);
+  height: 100vh;
+  overflow: hidden;
+}
+
+.week-explorer-intro {
+  text-align: center;
+  padding: 6rem 2rem 3rem;
+  border-top: 1px solid var(--border-color);
+}
+
+.week-explorer-intro h2 {
+  font-size: 2.5rem;
+  font-weight: 300;
+  margin-bottom: 0.75rem;
+  color: var(--text-primary);
+  letter-spacing: -0.02em;
+}
+
+.week-explorer-intro p {
+  font-size: 1.125rem;
+  color: var(--text-tertiary);
+  font-weight: 300;
+}
+
+/* Loading State */
+.bike-rhythms-loading {
+  padding: 6rem 0;
+}
+
+.loading-card {
+  max-width: 500px;
+  margin: 0 auto;
+  text-align: center;
+  padding: 3rem;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+}
+
+.loading-icon {
+  font-size: 4rem;
+  margin-bottom: 1.5rem;
+}
+
+.loading-card h2 {
+  font-size: 1.75rem;
+  font-weight: 400;
+  margin-bottom: 1rem;
+  color: var(--text-primary);
+}
+
+.loading-card > p {
+  color: var(--text-tertiary);
+  margin-bottom: 2rem;
+  line-height: 1.6;
+}
+
+.loading-steps {
+  text-align: left;
+}
+
+.loading-step {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: 1rem;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.loading-step:last-child {
+  border-bottom: none;
+}
+
+.step-number {
+  width: 28px;
+  height: 28px;
+  background: var(--bike-blue);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: white;
+  flex-shrink: 0;
+}
+
+.loading-step span:last-child {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+.loading-step code {
+  font-family: monospace;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 0.125rem 0.375rem;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  color: var(--bike-blue);
+}
+
+/* Navigation Tabs */
+.bike-rhythms-nav {
+  position: sticky;
+  top: 73px;
+  z-index: 50;
+  background: rgba(5, 5, 5, 0.95);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--border-color);
+  padding: 0.75rem 0;
+}
+
+.bike-rhythms-nav .container {
+  display: flex;
+  gap: 1rem;
+}
+
+.nav-tab {
+  padding: 0.75rem 1.5rem;
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: 6px;
+  color: var(--text-tertiary);
+  font-size: 0.875rem;
+  font-weight: 400;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  letter-spacing: 0.02em;
+}
+
+.nav-tab:hover {
+  color: var(--text-primary);
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.nav-tab.active {
+  color: var(--text-primary);
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Scroll Story Layout - Full Screen Fixed Map */
+.scroll-story {
+  position: relative;
+}
+
+.scroll-story-map {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 0;
+}
+
+.scroll-story-map.split-view {
+  display: flex;
+  gap: 4px;
+}
+
+.scroll-story-map.hidden {
+  display: none;
+}
+
+.split-map-left,
+.split-map-right {
+  flex: 1;
+  position: relative;
+  height: 100%;
+  min-height: 400px;
+  overflow: hidden;
+}
+
+.split-map-left .bike-map-wrapper,
+.split-map-right .bike-map-wrapper {
+  position: absolute;
+  inset: 0;
+}
+
+.split-map-label {
+  position: absolute;
+  top: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+  background: rgba(0, 0, 0, 0.7);
+  color: white;
+  padding: 8px 16px;
+  border-radius: 4px;
+  font-size: 1.25rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+}
+
+.scroll-story-content {
+  position: relative;
+  z-index: 2;
+  pointer-events: none;
+  padding-top: 50vh;
+  padding-bottom: 0;
+}
+
+/* Bike Map */
+.bike-map-wrapper {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.bike-map {
+  width: 100%;
+  height: 100%;
+}
+
+.bike-map-loading {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(5, 5, 5, 0.8);
+}
+
+.loading-spinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid rgba(255, 255, 255, 0.1);
+  border-top-color: var(--bike-blue);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Story Moments - Floating Cards (Bottom Right) */
+.story-moment {
+  min-height: 100vh;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  padding: 2rem;
+  pointer-events: none;
+}
+
+.story-moment-content {
+  max-width: 360px;
+  margin-right: 3vw;
+  margin-bottom: 3rem;
+  background: rgba(5, 5, 5, 0.9);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 1.75rem;
+  pointer-events: auto;
+  opacity: 0.3;
+  transform: translateY(20px);
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+}
+
+.story-moment.active .story-moment-content {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Slightly more transparent card during split view */
+.scroll-story.has-split-view .story-moment-content {
+  background: rgba(20, 20, 20, 0.75);
+  backdrop-filter: blur(8px);
+}
+
+.story-time-badge {
+  display: inline-block;
+  padding: 0.375rem 0.75rem;
+  background: rgba(0, 163, 224, 0.15);
+  border: 1px solid rgba(0, 163, 224, 0.3);
+  border-radius: 20px;
+  color: var(--bike-blue);
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+
+.story-moment-title {
+  font-size: 1.75rem;
+  font-weight: 400;
+  margin-bottom: 0.75rem;
+  color: var(--text-primary);
+  letter-spacing: -0.02em;
+}
+
+.story-moment-description {
+  color: var(--text-secondary);
+  font-size: 1rem;
+  line-height: 1.7;
+  margin-bottom: 1.25rem;
+  font-weight: 300;
+}
+
+.story-stat {
+  display: flex;
+  flex-direction: column;
+  gap: 0.125rem;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.story-stat-value {
+  font-size: 2.25rem;
+  font-weight: 300;
+  color: var(--bike-blue);
+  letter-spacing: -0.02em;
+  line-height: 1;
+}
+
+.story-stat-label {
+  font-size: 0.75rem;
+  color: var(--text-tertiary);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+/* Week Explorer - Full Screen Layout */
+.week-explorer {
+  position: relative;
+  height: 100vh;
+  width: 100%;
+  overflow: hidden;
+}
+
+.week-explorer-map {
+  position: absolute;
+  inset: 0;
+  height: 100%;
+}
+
+.week-explorer-map .bike-map-wrapper {
+  height: 100%;
+}
+
+/* Title overlay - top center */
+.week-explorer-title {
+  position: absolute;
+  top: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+  text-align: center;
+  background: rgba(0, 0, 0, 0.7);
+  padding: 1rem 2rem;
+  border-radius: 8px;
+  backdrop-filter: blur(8px);
+}
+
+.week-explorer-title h2 {
+  font-size: 1.5rem;
+  font-weight: 300;
+  margin-bottom: 0.25rem;
+  color: var(--text-primary);
+}
+
+.week-explorer-title p {
+  font-size: 0.875rem;
+  color: var(--text-tertiary);
+  margin: 0;
+}
+
+/* Time display - top left overlay */
+.week-explorer .timeline-current-time {
+  position: absolute;
+  top: 2rem;
+  left: 2rem;
+  z-index: 10;
+  text-align: left;
+  background: rgba(0, 0, 0, 0.7);
+  padding: 1rem 1.5rem;
+  border-radius: 8px;
+  backdrop-filter: blur(8px);
+}
+
+.timeline-day {
+  display: block;
+  font-size: 0.875rem;
+  color: var(--bike-blue);
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  font-weight: 500;
+  margin-bottom: 0.25rem;
+}
+
+.timeline-hour {
+  font-size: 1.75rem;
+  font-weight: 300;
+  color: var(--text-primary);
+}
+
+/* Modern Control Panel - Bottom Left */
+.week-explorer-controls {
+  position: absolute;
+  bottom: 2rem;
+  left: 2rem;
+  z-index: 10;
+  background: rgba(12, 12, 16, 0.92);
+  backdrop-filter: blur(24px);
+  border-radius: 16px;
+  padding: 0.75rem 1.25rem;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255, 255, 255, 0.05) inset;
+  min-width: 260px;
+}
+
+/* Time Display */
+.controls-time {
+  text-align: center;
+  margin-bottom: 0.5rem;
+}
+
+.controls-day {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: white;
+  letter-spacing: -0.02em;
+}
+
+.controls-hour {
+  font-size: 0.7rem;
+  color: var(--text-secondary);
+  margin-top: 0.1rem;
+}
+
+/* Button Row */
+.controls-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.25rem;
+}
+
+/* Navigation Buttons */
+.nav-btn {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: transparent;
+  border: none;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.nav-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  transform: scale(1.1);
+}
+
+.nav-btn svg {
+  transition: transform 0.2s ease;
+}
+
+.nav-btn:active svg {
+  transform: scale(0.9);
+}
+
+/* Play Button */
+.play-btn {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #00a3e0 0%, #0077b6 100%);
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 20px rgba(0, 163, 224, 0.4);
+  margin: 0 0.35rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.play-btn:not(.playing) {
+  animation: pulseGlow 2s ease-in-out infinite;
+}
+
+@keyframes pulseGlow {
+  0%, 100% { box-shadow: 0 4px 20px rgba(0, 163, 224, 0.4); }
+  50% { box-shadow: 0 4px 30px rgba(0, 163, 224, 0.6), 0 0 0 8px rgba(0, 163, 224, 0.1); }
+}
+
+.play-btn:hover {
+  transform: scale(1.08);
+  box-shadow: 0 6px 28px rgba(0, 163, 224, 0.5);
+}
+
+.play-btn.playing {
+  background: rgba(255, 255, 255, 0.08);
+  box-shadow: none;
+  border: 2px solid var(--bike-blue);
+}
+
+/* Play Icon (CSS triangle) */
+.play-icon {
+  width: 0;
+  height: 0;
+  border-left: 12px solid white;
+  border-top: 7px solid transparent;
+  border-bottom: 7px solid transparent;
+  margin-left: 3px;
+}
+
+/* Pause Icon */
+.pause-icon {
+  display: flex;
+  gap: 4px;
+}
+
+.pause-icon span {
+  width: 4px;
+  height: 14px;
+  background: white;
+  border-radius: 2px;
+}
+
+/* Progress Container */
+.progress-container {
+  margin-top: 0.5rem;
+}
+
+.progress-track {
+  height: 6px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 3px;
+  cursor: pointer;
+  position: relative;
+  overflow: visible;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #00a3e0 0%, #9b59b6 100%);
+  border-radius: 3px;
+  position: relative;
+  transition: width 0.15s linear;
+}
+
+.progress-thumb {
+  position: absolute;
+  right: -8px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 16px;
+  height: 16px;
+  background: white;
+  border-radius: 50%;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  cursor: grab;
+  transition: transform 0.15s ease;
+}
+
+.progress-track:hover .progress-thumb {
+  transform: translateY(-50%) scale(1.2);
+}
+
+/* Day Markers - Clickable */
+.progress-days {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 0.5rem;
+  padding: 0 2px;
+}
+
+.progress-day {
+  font-size: 0.65rem;
+  color: var(--text-tertiary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  transition: all 0.2s ease;
+  background: none;
+  border: none;
+  padding: 0.25rem 0.35rem;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.progress-day:hover {
+  color: var(--bike-blue);
+  transform: scale(1.2);
+  background: rgba(0, 163, 224, 0.1);
+}
+
+.progress-day.active {
+  color: var(--bike-blue);
+  font-weight: 600;
+  transform: scale(1.1);
+}
+
+/* Speed Control */
+.speed-control {
+  display: flex;
+  justify-content: center;
+  margin-top: 0.4rem;
+}
+
+.speed-select {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  padding: 0.4rem 0.75rem;
+  color: var(--text-secondary);
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  outline: none;
+}
+
+.speed-select:hover,
+.speed-select:focus {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.2);
+  color: var(--text-primary);
+}
+
+.speed-select option {
+  background: var(--prime-black);
+  color: var(--text-primary);
+}
+
+/* Week Explorer Attribution Overlay */
+.week-explorer-attribution {
+  position: absolute;
+  bottom: 1rem;
+  left: 2rem;
+  z-index: 10;
+  color: var(--text-tertiary);
+  font-size: 0.75rem;
+}
+
+.week-explorer-attribution a {
+  color: var(--text-secondary);
+  text-decoration: none;
+  transition: opacity var(--transition-fast);
+}
+
+.week-explorer-attribution a:hover {
+  opacity: 0.7;
+}
+
+/* Footer */
+.bike-rhythms-footer {
+  position: relative;
+  z-index: 10;
+  background: var(--prime-black);
+  padding: 3rem 0;
+  border-top: 1px solid var(--border-color);
+  margin-top: 4rem;
+}
+
+.data-attribution {
+  color: var(--text-tertiary);
+  font-size: 0.875rem;
+  text-align: center;
+}
+
+.data-attribution a {
+  color: var(--text-primary);
+  text-decoration: none;
+  transition: opacity var(--transition-fast);
+}
+
+.data-attribution a:hover {
+  opacity: 0.7;
+}
+
+/* Mobile Responsive */
+@media (max-width: 1024px) {
+  .scroll-story-map {
+    height: 100vh;
+    height: 100dvh;
+  }
+
+  .story-moment {
+    min-height: 80vh;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .story-moment-content {
+    margin: 1rem;
+    max-width: 90%;
+    padding: 1.5rem;
+  }
+
+  .week-explorer {
+    height: 70vh;
+  }
+}
+
+@media (max-width: 768px) {
+  .bike-rhythms-nav .container {
+    justify-content: center;
+  }
+
+  .nav-tab {
+    padding: 0.5rem 1rem;
+    font-size: 0.8rem;
+  }
+
+  .story-moment-title {
+    font-size: 1.5rem;
+  }
+
+  .story-moment-description {
+    font-size: 1rem;
+  }
+
+  .story-stat-value {
+    font-size: 2rem;
+  }
+
+  .timeline-hour-block {
+    width: 12px;
+    height: 30px;
+  }
+
+  .projects-grid {
+    grid-template-columns: 1fr;
+  }
 }

@@ -1,0 +1,137 @@
+[
+  {
+    "id": "intro",
+    "title": "The Invisible Geography",
+    "description": "125,000 bike trips. Every day. Forty-six million a year. This is how New York moves.",
+    "mapState": {"center": [-73.97, 40.75], "zoom": 11.8, "bearing": 0, "pitch": 0},
+    "highlightNeighborhoods": [],
+    "flowFilter": null,
+    "statistic": {"label": "Annual Trips", "value": "46M"}
+  },
+  {
+    "id": "exodus",
+    "title": "The Exodus",
+    "description": "Every weekday morning, 275,000 trips flow from Brooklyn to Manhattan. By 9am, Williamsburg has sent half its bikes across the bridge.",
+    "mapState": {"center": [-73.96, 40.71], "zoom": 12.5, "bearing": -15, "pitch": 40},
+    "highlightNeighborhoods": ["BK0101", "BK0102", "BK0301"],
+    "flowFilter": {
+      "timePeriods": ["morning_rush"],
+      "dayType": "weekday",
+      "direction": "outbound",
+      "fromPrefixes": ["BK", "QN"],
+      "toPrefixes": ["MN"]
+    },
+    "flowColor": "#FF9500",
+    "timeContext": "Weekday, 7-9 AM",
+    "statistic": {"label": "Morning Commute", "value": "275K"}
+  },
+  {
+    "id": "two-cities",
+    "title": "Two Rush Hours",
+    "description": "Midtown fills at 8am—half a million arrivals. The Village waits until 11. Same bikes, different schedules.",
+    "mapState": {"center": [-73.99, 40.73], "zoom": 12.5, "bearing": 0, "pitch": 20},
+    "highlightNeighborhoods": [],
+    "flowFilter": null,
+    "splitView": {
+      "left": {
+        "label": "8 AM",
+        "flowFilter": {
+          "timePeriods": ["morning_rush"],
+          "dayType": "weekday",
+          "direction": "inbound",
+          "toPrefixes": ["MN04", "MN05"]
+        },
+        "flowColor": "#FF9500"
+      },
+      "right": {
+        "label": "11 AM",
+        "flowFilter": {
+          "timePeriods": ["late_morning"],
+          "dayType": "weekday",
+          "direction": "inbound",
+          "toPrefixes": ["MN02", "MN03"]
+        },
+        "flowColor": "#FF6B35"
+      }
+    },
+    "timeContext": "Weekday Morning",
+    "statistic": {"label": "Midtown Arrivals", "value": "509K"}
+  },
+  {
+    "id": "midday-divide",
+    "title": "The Midday Divide",
+    "description": "At noon, the city splits. One in six riders are tourists—day passes instead of memberships. They cluster in Central Park. The commute routes stay local.",
+    "mapState": {"center": [-73.97, 40.77], "zoom": 13, "bearing": 0, "pitch": 0},
+    "highlightNeighborhoods": ["MN0701", "MN0801", "MN6491"],
+    "flowFilter": {
+      "timePeriods": ["late_morning", "midday"],
+      "dayType": "weekday",
+      "direction": "all"
+    },
+    "flowColor": "#FFD93D",
+    "timeContext": "Weekday, 12 PM",
+    "statistic": {"label": "Day-Pass Riders", "value": "1 in 6"}
+  },
+  {
+    "id": "return",
+    "title": "The Return",
+    "description": "The evening rush is 61% bigger than morning. For every two riders heading in, three head out.",
+    "mapState": {"center": [-73.98, 40.72], "zoom": 12, "bearing": 10, "pitch": 35},
+    "highlightNeighborhoods": ["BK0102", "BK0202", "BK0101"],
+    "flowFilter": {
+      "timePeriods": ["evening_rush"],
+      "dayType": "weekday",
+      "direction": "outbound",
+      "fromPrefixes": ["MN"],
+      "toPrefixes": ["BK", "QN"]
+    },
+    "flowColor": "#9B59B6",
+    "timeContext": "Weekday, 5-7 PM",
+    "statistic": {"label": "Evening Surge", "value": "+61%"}
+  },
+  {
+    "id": "friday-night",
+    "title": "After Dark",
+    "description": "At midnight, the East Village leads. 220,000 night arrivals—more than any other neighborhood. The bars close at 4am. The bikes keep moving.",
+    "mapState": {"center": [-73.985, 40.725], "zoom": 13, "bearing": 15, "pitch": 30},
+    "highlightNeighborhoods": ["MN0303", "BK0102", "MN0302"],
+    "flowFilter": {
+      "timePeriods": ["night", "late_night"],
+      "dayType": "weekday",
+      "direction": "inbound",
+      "toPrefixes": ["MN03", "BK01"]
+    },
+    "flowColor": "#3498DB",
+    "timeContext": "Weeknight, 8 PM - 2 AM",
+    "statistic": {"label": "Night Arrivals", "value": "220K"}
+  },
+  {
+    "id": "weekend",
+    "title": "Weekend Transformation",
+    "description": "One in four trips happens on a weekend. But they go everywhere the weekday doesn't—parks, waterfronts, brunch.",
+    "mapState": {"center": [-73.97, 40.75], "zoom": 12, "bearing": 0, "pitch": 20},
+    "highlightNeighborhoods": ["BK0602", "BK0201", "MN0202"],
+    "flowFilter": {
+      "timePeriods": ["late_morning", "midday"],
+      "dayType": "weekend",
+      "direction": "all"
+    },
+    "flowColor": "#2ECC71",
+    "timeContext": "Saturday & Sunday",
+    "statistic": {"label": "Weekend Trips", "value": "1 in 4"}
+  },
+  {
+    "id": "gap",
+    "title": "The Gap",
+    "description": "Citi Bike covers Manhattan, Brooklyn, Queens. The Bronx has 50 stations. Staten Island has zero. The bright spots show where the bikes go.",
+    "mapState": {"center": [-73.94, 40.78], "zoom": 10.5, "bearing": 0, "pitch": 0},
+    "highlightNeighborhoods": [],
+    "flowFilter": {
+      "timePeriods": ["morning_rush", "evening_rush", "midday"],
+      "dayType": "all",
+      "direction": "all"
+    },
+    "flowColor": "rgba(100, 100, 120, 0.5)",
+    "statistic": {"label": "Total Stations", "value": "4,495"}
+  }
+]
