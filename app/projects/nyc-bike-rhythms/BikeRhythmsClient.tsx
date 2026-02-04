@@ -9,10 +9,16 @@ type BikeRhythmsClientProps = {
   storyMoments: StoryMoment[]
 }
 
+// Empty placeholder for immediate render
+const EMPTY_NEIGHBORHOODS: NeighborhoodsGeoJSON = {
+  type: 'FeatureCollection',
+  features: []
+}
+
 export default function BikeRhythmsClient({
   storyMoments
 }: BikeRhythmsClientProps) {
-  const [neighborhoods, setNeighborhoods] = useState<NeighborhoodsGeoJSON | null>(null)
+  const [neighborhoods, setNeighborhoods] = useState<NeighborhoodsGeoJSON>(EMPTY_NEIGHBORHOODS)
   const [flows, setFlows] = useState<FlowData | undefined>(undefined)
 
   // Scroll to top when page loads (prevents browser scroll restoration)
@@ -20,22 +26,18 @@ export default function BikeRhythmsClient({
     window.scrollTo(0, 0)
   }, [])
 
-  // Lazy load data after initial render
+  // Load data - preload links in page.tsx start fetch early
   useEffect(() => {
-    // Load neighborhoods first (smaller, needed for map)
-    fetch('/data/citibike/neighborhoods.json')
-      .then(res => res.json())
-      .then(data => setNeighborhoods(data))
-      .catch(err => console.error('Failed to load neighborhoods:', err))
-
-    // Load flows in parallel (larger, for visualizations)
-    fetch('/data/citibike/flows.json')
-      .then(res => res.json())
-      .then(data => setFlows(data))
-      .catch(err => console.error('Failed to load flows:', err))
+    Promise.all([
+      fetch('/data/citibike/neighborhoods.json').then(res => res.json()),
+      fetch('/data/citibike/flows.json').then(res => res.json())
+    ])
+      .then(([neighborhoodsData, flowsData]) => {
+        setNeighborhoods(neighborhoodsData)
+        setFlows(flowsData)
+      })
+      .catch(err => console.error('Failed to load data:', err))
   }, [])
-
-  const hasData = neighborhoods && neighborhoods.features.length > 0
 
   return (
     <div className="bike-rhythms">
@@ -67,32 +69,20 @@ export default function BikeRhythmsClient({
         </div>
       </section>
 
-      {!hasData ? (
-        <section className="bike-rhythms-loading">
-          <div className="container">
-            <div className="loading-card">
-              <div className="loading-spinner" />
-              <p>Loading 46 million trips...</p>
-            </div>
-          </div>
-        </section>
-      ) : (
-        <>
-          <ScrollStory
-            moments={storyMoments}
-            neighborhoods={neighborhoods}
-            flows={flows}
-          />
+      {/* Always render components - map shows dark background while loading */}
+      <ScrollStory
+        moments={storyMoments}
+        neighborhoods={neighborhoods}
+        flows={flows}
+      />
 
-          {/* Week Explorer section - full screen, no intro to prevent extra scroll */}
-          <section className="week-explorer-section" id="week-explorer">
-            <WeekExplorer
-              neighborhoods={neighborhoods}
-              flows={flows}
-            />
-          </section>
-        </>
-      )}
+      {/* Week Explorer section */}
+      <section className="week-explorer-section" id="week-explorer">
+        <WeekExplorer
+          neighborhoods={neighborhoods}
+          flows={flows}
+        />
+      </section>
     </div>
   )
 }

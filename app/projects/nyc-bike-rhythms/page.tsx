@@ -15,8 +15,13 @@ export const metadata: Metadata = {
 
 export default function NYCBikeRhythms() {
   return (
-    <BikeRhythmsClient
-      storyMoments={storyMoments as StoryMoment[]}
-    />
+    <>
+      {/* Preload data files to start fetching in parallel with JS */}
+      <link rel="preload" href="/data/citibike/neighborhoods.json" as="fetch" crossOrigin="anonymous" />
+      <link rel="preload" href="/data/citibike/flows.json" as="fetch" crossOrigin="anonymous" />
+      <BikeRhythmsClient
+        storyMoments={storyMoments as StoryMoment[]}
+      />
+    </>
   )
 }
