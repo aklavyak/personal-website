@@ -257,16 +257,16 @@ export default function BikeMap({
         data: { type: 'FeatureCollection', features: [] }
       })
 
-      // Particle layer - glowing circles that move along flows
+      // Particle layer - subtle glowing dots
       map.current.addLayer({
         id: 'flow-particles',
         type: 'circle',
         source: 'particles',
         paint: {
-          'circle-radius': 4,
+          'circle-radius': 3,
           'circle-color': '#FFFFFF',
-          'circle-opacity': 1,
-          'circle-blur': 0.3
+          'circle-opacity': 0.8,
+          'circle-blur': 0.4
         }
       })
 
@@ -395,13 +395,13 @@ export default function BikeMap({
     const particleSource = map.current.getSource('particles') as mapboxgl.GeoJSONSource
     if (!particleSource) return
 
-    // Generate multiple particles per flow line at different offsets
+    // Generate particles per flow line - elegant, slow movement
     const generateParticles = () => {
-      // INCREMENT PROGRESS - makes particles move!
-      progressRef.current = (progressRef.current + 0.008) % 1
+      // Slow, graceful movement
+      progressRef.current = (progressRef.current + 0.003) % 1
 
       const particles: GeoJSON.Feature[] = []
-      const numParticlesPerFlow = 3
+      const numParticlesPerFlow = 2
 
       flowGeoJSON.features.forEach((feature, flowIndex) => {
         const coords = feature.geometry.coordinates as [number, number][]
