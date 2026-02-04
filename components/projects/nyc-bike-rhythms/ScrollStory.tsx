@@ -1,9 +1,15 @@
 'use client'
 
 import { useRef, useState, useEffect, useCallback } from 'react'
-import BikeMap from './BikeMap'
+import dynamic from 'next/dynamic'
 import StoryMoment from './StoryMoment'
 import type { StoryMoment as StoryMomentType, NeighborhoodsGeoJSON, FlowData } from '@/lib/types/citibike'
+
+// Dynamic import BikeMap - Mapbox GL JS is ~400KB, don't block initial load
+const BikeMap = dynamic(() => import('./BikeMap'), {
+  ssr: false,
+  loading: () => <div className="bike-map-placeholder" />
+})
 
 type ScrollStoryProps = {
   moments: StoryMomentType[]
