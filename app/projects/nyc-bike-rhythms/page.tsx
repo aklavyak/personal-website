@@ -1,18 +1,7 @@
 import { Metadata } from 'next'
 import BikeRhythmsClient from './BikeRhythmsClient'
 import storyMoments from '@/data/citibike/story-moments.json'
-import weeklyPatterns from '@/data/citibike/weekly-patterns.json'
-import neighborhoods from '@/data/citibike/neighborhoods.json'
-import type { StoryMoment, NeighborhoodsGeoJSON, NeighborhoodPattern, FlowData } from '@/lib/types/citibike'
-
-// Dynamically import flows if it exists
-let flows: FlowData | undefined
-try {
-  // eslint-disable-next-line @typescript-eslint/no-require-imports
-  flows = require('@/data/citibike/flows.json') as FlowData
-} catch {
-  flows = undefined
-}
+import type { StoryMoment } from '@/lib/types/citibike'
 
 export const metadata: Metadata = {
   title: 'City in Motion | Aklavya',
@@ -28,9 +17,6 @@ export default function NYCBikeRhythms() {
   return (
     <BikeRhythmsClient
       storyMoments={storyMoments as StoryMoment[]}
-      weeklyPatterns={weeklyPatterns as Record<string, NeighborhoodPattern>}
-      neighborhoods={neighborhoods as NeighborhoodsGeoJSON}
-      flows={flows}
     />
   )
 }

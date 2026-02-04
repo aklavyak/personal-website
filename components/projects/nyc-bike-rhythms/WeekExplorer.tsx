@@ -2,11 +2,10 @@
 
 import { useState, useEffect, useMemo, useRef } from 'react'
 import BikeMap from './BikeMap'
-import type { NeighborhoodsGeoJSON, NeighborhoodPattern, FlowData, FlowFilter, TimePeriod } from '@/lib/types/citibike'
+import type { NeighborhoodsGeoJSON, FlowData, FlowFilter, TimePeriod } from '@/lib/types/citibike'
 
 type WeekExplorerProps = {
   neighborhoods: NeighborhoodsGeoJSON
-  weeklyPatterns: Record<string, NeighborhoodPattern>
   flows?: FlowData
 }
 
@@ -39,7 +38,7 @@ function getColorForHour(hour: number): string {
   return '#1A1A2E'
 }
 
-export default function WeekExplorer({ neighborhoods, weeklyPatterns, flows }: WeekExplorerProps) {
+export default function WeekExplorer({ neighborhoods, flows }: WeekExplorerProps) {
   const progressRef = useRef<HTMLDivElement>(null)
   const [currentSlot, setCurrentSlot] = useState(8)
   const [isPlaying, setIsPlaying] = useState(false)

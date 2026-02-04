@@ -1,29 +1,41 @@
 'use client'
 
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import ScrollStory from '@/components/projects/nyc-bike-rhythms/ScrollStory'
 import WeekExplorer from '@/components/projects/nyc-bike-rhythms/WeekExplorer'
-import type { StoryMoment, NeighborhoodsGeoJSON, NeighborhoodPattern, FlowData } from '@/lib/types/citibike'
+import type { StoryMoment, NeighborhoodsGeoJSON, FlowData } from '@/lib/types/citibike'
 
 type BikeRhythmsClientProps = {
   storyMoments: StoryMoment[]
-  weeklyPatterns: Record<string, NeighborhoodPattern>
-  neighborhoods: NeighborhoodsGeoJSON
-  flows?: FlowData
 }
 
 export default function BikeRhythmsClient({
-  storyMoments,
-  weeklyPatterns,
-  neighborhoods,
-  flows
+  storyMoments
 }: BikeRhythmsClientProps) {
-  const hasData = neighborhoods.features.length > 0
+  const [neighborhoods, setNeighborhoods] = useState<NeighborhoodsGeoJSON | null>(null)
+  const [flows, setFlows] = useState<FlowData | undefined>(undefined)
 
   // Scroll to top when page loads (prevents browser scroll restoration)
   useEffect(() => {
     window.scrollTo(0, 0)
   }, [])
+
+  // Lazy load data after initial render
+  useEffect(() => {
+    // Load neighborhoods first (smaller, needed for map)
+    fetch('/data/citibike/neighborhoods.json')
+      .then(res => res.json())
+      .then(data => setNeighborhoods(data))
+      .catch(err => console.error('Failed to load neighborhoods:', err))
+
+    // Load flows in parallel (larger, for visualizations)
+    fetch('/data/citibike/flows.json')
+      .then(res => res.json())
+      .then(data => setFlows(data))
+      .catch(err => console.error('Failed to load flows:', err))
+  }, [])
+
+  const hasData = neighborhoods && neighborhoods.features.length > 0
 
   return (
     <div className="bike-rhythms">
@@ -76,7 +88,6 @@ export default function BikeRhythmsClient({
           <section className="week-explorer-section" id="week-explorer">
             <WeekExplorer
               neighborhoods={neighborhoods}
-              weeklyPatterns={weeklyPatterns}
               flows={flows}
             />
           </section>
