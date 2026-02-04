@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useState, useRef } from 'react'
+import { useEffect, useState } from 'react'
 import ScrollStory from '@/components/projects/nyc-bike-rhythms/ScrollStory'
 import WeekExplorer from '@/components/projects/nyc-bike-rhythms/WeekExplorer'
 import HeroAnimation from '@/components/projects/nyc-bike-rhythms/HeroAnimation'
@@ -21,30 +21,14 @@ export default function BikeRhythmsClient({
 }: BikeRhythmsClientProps) {
   const [neighborhoods, setNeighborhoods] = useState<NeighborhoodsGeoJSON>(EMPTY_NEIGHBORHOODS)
   const [flows, setFlows] = useState<FlowData | undefined>(undefined)
-  const [shouldLoadMap, setShouldLoadMap] = useState(false)
-  const heroRef = useRef<HTMLElement>(null)
 
   // Scroll to top when page loads (prevents browser scroll restoration)
   useEffect(() => {
     window.scrollTo(0, 0)
   }, [])
 
-  // Scroll-triggered loading - start loading map data when user scrolls
+  // Load data immediately on mount - preload links in page.tsx start fetch early
   useEffect(() => {
-    const handleScroll = () => {
-      if (window.scrollY > 100) {
-        setShouldLoadMap(true)
-        window.removeEventListener('scroll', handleScroll)
-      }
-    }
-    window.addEventListener('scroll', handleScroll, { passive: true })
-    return () => window.removeEventListener('scroll', handleScroll)
-  }, [])
-
-  // Load data only when scroll trigger fires
-  useEffect(() => {
-    if (!shouldLoadMap) return
-
     Promise.all([
       fetch('/data/citibike/neighborhoods.json').then(res => res.json()),
       fetch('/data/citibike/flows.json').then(res => res.json())
@@ -54,12 +38,12 @@ export default function BikeRhythmsClient({
         setFlows(flowsData)
       })
       .catch(err => console.error('Failed to load data:', err))
-  }, [shouldLoadMap])
+  }, [])
 
   return (
     <div className="bike-rhythms">
       {/* Hero with animated SVG trip visualization - loads instantly */}
-      <section className="bike-rhythms-hero" ref={heroRef}>
+      <section className="bike-rhythms-hero">
         <div className="hero-cover-visual">
           <div className="cover-gradient" />
           <HeroAnimation />

@@ -151,8 +151,8 @@ export default function BikeMap({
     }
 
     // Sort by count and take top flows
-    // Show more flows for 'all' direction (e.g., The Gap) to show coverage
-    const maxFlows = flowFilter.direction === 'all' ? 300 : 100
+    // Show more flows for 'all' direction to show full coverage
+    const maxFlows = flowFilter.direction === 'all' ? 500 : 200
     return Array.from(aggregated.values())
       .sort((a, b) => b.c - a.c)
       .slice(0, maxFlows)
@@ -238,15 +238,15 @@ export default function BikeMap({
             'interpolate',
             ['linear'],
             ['line-progress'],
-            0, 'rgba(255, 149, 0, 0.1)',
-            0.3, 'rgba(255, 149, 0, 0.3)',
-            0.7, 'rgba(255, 149, 0, 0.6)',
-            1, 'rgba(255, 149, 0, 0.9)'
+            0, 'rgba(255, 149, 0, 0.15)',
+            0.3, 'rgba(255, 149, 0, 0.4)',
+            0.7, 'rgba(255, 149, 0, 0.7)',
+            1, 'rgba(255, 149, 0, 1)'
           ],
           'line-width': [
             'interpolate', ['linear'], ['get', 'normalizedCount'],
-            0, 2,
-            1, 5
+            0, 2.5,
+            1, 7
           ]
         }
       })
@@ -257,16 +257,16 @@ export default function BikeMap({
         data: { type: 'FeatureCollection', features: [] }
       })
 
-      // Particle layer - small circles that move along flows
+      // Particle layer - glowing circles that move along flows
       map.current.addLayer({
         id: 'flow-particles',
         type: 'circle',
         source: 'particles',
         paint: {
-          'circle-radius': 3,
+          'circle-radius': 4,
           'circle-color': '#FFFFFF',
-          'circle-opacity': 0.9,
-          'circle-blur': 0.5
+          'circle-opacity': 1,
+          'circle-blur': 0.3
         }
       })
 

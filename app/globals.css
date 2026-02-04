@@ -1742,6 +1742,8 @@ body {
   position: absolute;
   inset: 0;
   overflow: hidden;
+  z-index: 0;
+  pointer-events: none;
 }
 
 .hero-svg {
@@ -1836,7 +1838,7 @@ body {
   flex-direction: column;
   align-items: center;
   gap: 0.5rem;
-  color: var(--text-tertiary);
+  color: var(--bike-blue);
   font-size: 0.75rem;
   letter-spacing: 0.1em;
   text-transform: uppercase;
