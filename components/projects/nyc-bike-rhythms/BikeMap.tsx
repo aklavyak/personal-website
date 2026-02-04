@@ -444,11 +444,6 @@ export default function BikeMap({
   return (
     <div className="bike-map-wrapper">
       <div ref={mapContainer} className="bike-map" />
-      {!loaded && (
-        <div className="bike-map-loading">
-          <div className="loading-spinner" />
-        </div>
-      )}
     </div>
   )
 }
