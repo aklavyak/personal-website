@@ -1833,24 +1833,22 @@ body {
 }
 
 .bike-rhythms-scroll-hint {
-  position: absolute;
-  bottom: 3rem;
-  left: 50%;
-  transform: translateX(-50%);
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0.5rem;
+  gap: 0.75rem;
   color: var(--bike-blue);
-  font-size: 0.75rem;
-  letter-spacing: 0.1em;
+  font-size: 0.875rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
   text-transform: uppercase;
-  opacity: 0.6;
+  margin-top: 3rem;
 }
 
 .scroll-arrow {
   animation: bounce 2s infinite;
-  font-size: 1.25rem;
+  font-size: 1.5rem;
+  color: var(--bike-blue);
 }
 
 @keyframes bounce {

@@ -395,10 +395,10 @@ export default function BikeMap({
     const particleSource = map.current.getSource('particles') as mapboxgl.GeoJSONSource
     if (!particleSource) return
 
-    // Generate particles per flow line - elegant, slow movement
+    // Generate particles per flow line - smooth, intentional movement
     const generateParticles = () => {
-      // Slow, graceful movement
-      progressRef.current = (progressRef.current + 0.003) % 1
+      // Smooth 60fps movement - completes path in ~5 seconds
+      progressRef.current = (progressRef.current + 0.005) % 1
 
       const particles: GeoJSON.Feature[] = []
       const numParticlesPerFlow = 2
