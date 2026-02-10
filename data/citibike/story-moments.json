@@ -2,7 +2,7 @@
   {
     "id": "intro",
     "title": "The Invisible Geography",
-    "description": "125,000 bike trips. Every day. Forty-six million a year. This is how New York moves.",
+    "description": "125,000 bike trips happen every day. Forty-six million a year. This is how New York actually moves.",
     "mapState": {"center": [-73.97, 40.75], "zoom": 11.8, "bearing": 0, "pitch": 0},
     "highlightNeighborhoods": [],
     "flowFilter": null,
@@ -11,7 +11,7 @@
   {
     "id": "exodus",
     "title": "The Exodus",
-    "description": "Every weekday morning, 275,000 trips flow from Brooklyn to Manhattan. By 9am, Williamsburg has sent half its bikes across the bridge.",
+    "description": "Every weekday morning, 275,000 trips pour from Brooklyn into Manhattan. By 9am, Williamsburg has already sent half its bikes across the bridge.",
     "mapState": {"center": [-73.96, 40.71], "zoom": 12.5, "bearing": -15, "pitch": 40},
     "highlightNeighborhoods": ["BK0101", "BK0102", "BK0301"],
     "flowFilter": {
@@ -28,7 +28,7 @@
   {
     "id": "two-cities",
     "title": "Two Rush Hours",
-    "description": "Midtown fills at 8am—half a million arrivals. The Village waits until 11. Same bikes, different schedules.",
+    "description": "By 8am, half a million people have rolled into Midtown. The Village doesn't wake up until 11.",
     "mapState": {"center": [-73.99, 40.73], "zoom": 12.5, "bearing": 0, "pitch": 20},
     "highlightNeighborhoods": [],
     "flowFilter": null,
@@ -60,7 +60,7 @@
   {
     "id": "midday-divide",
     "title": "The Midday Divide",
-    "description": "At noon, the city splits. One in six riders are tourists—day passes instead of memberships. They cluster in Central Park. The commute routes stay local.",
+    "description": "At noon, the city splits. One in six riders are tourists on day passes, not memberships. They cluster in Central Park while commuters keep it local.",
     "mapState": {"center": [-73.97, 40.77], "zoom": 13, "bearing": 0, "pitch": 0},
     "highlightNeighborhoods": ["MN0701", "MN0801", "MN6491"],
     "flowFilter": {
@@ -75,7 +75,7 @@
   {
     "id": "return",
     "title": "The Return",
-    "description": "The evening rush is 61% bigger than morning. For every two riders heading in, three head out.",
+    "description": "The evening rush is 61% bigger than morning. For every two people who biked in, three are biking out.",
     "mapState": {"center": [-73.98, 40.72], "zoom": 12, "bearing": 10, "pitch": 35},
     "highlightNeighborhoods": ["BK0102", "BK0202", "BK0101"],
     "flowFilter": {
@@ -92,7 +92,7 @@
   {
     "id": "friday-night",
     "title": "After Dark",
-    "description": "At midnight, the East Village leads. 220,000 night arrivals—more than any other neighborhood. The bars close at 4am. The bikes keep moving.",
+    "description": "At midnight, the East Village takes the lead with 220,000 arrivals, more than anywhere else. The bars close at 4am. The bikes keep moving.",
     "mapState": {"center": [-73.985, 40.725], "zoom": 13, "bearing": 15, "pitch": 30},
     "highlightNeighborhoods": ["MN0303", "BK0102", "MN0302"],
     "flowFilter": {
@@ -108,7 +108,7 @@
   {
     "id": "weekend",
     "title": "Weekend Transformation",
-    "description": "One in four trips happens on a weekend. But they go everywhere the weekday doesn't—parks, waterfronts, brunch.",
+    "description": "One in four trips happens on the weekend. But they go everywhere weekdays don't: parks, waterfronts, brunch spots.",
     "mapState": {"center": [-73.97, 40.75], "zoom": 12, "bearing": 0, "pitch": 20},
     "highlightNeighborhoods": ["BK0602", "BK0201", "MN0202"],
     "flowFilter": {
@@ -123,7 +123,7 @@
   {
     "id": "gap",
     "title": "The Gap",
-    "description": "Citi Bike covers Manhattan, Brooklyn, Queens. The Bronx has 50 stations. Staten Island has zero. The bright spots show where the bikes go.",
+    "description": "Citi Bike covers Manhattan, Brooklyn, and Queens. The Bronx has just 50 stations. Staten Island has none. The bright spots show where the network actually reaches.",
     "mapState": {"center": [-73.94, 40.78], "zoom": 10.5, "bearing": 0, "pitch": 0},
     "highlightNeighborhoods": [],
     "flowFilter": {
