@@ -4,10 +4,9 @@ import { useState, useEffect, useMemo, useRef } from 'react'
 import dynamic from 'next/dynamic'
 import type { NeighborhoodsGeoJSON, FlowData, FlowFilter, TimePeriod } from '@/lib/types/citibike'
 
-// Dynamic import BikeMap - Mapbox GL JS is ~400KB, don't block initial load
+// Dynamic import BikeMap - Mapbox GL JS needs window object
 const BikeMap = dynamic(() => import('./BikeMap'), {
-  ssr: false,
-  loading: () => <div className="bike-map-placeholder" />
+  ssr: false
 })
 
 type WeekExplorerProps = {

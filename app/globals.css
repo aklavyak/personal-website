@@ -2077,16 +2077,6 @@ body {
   height: 100%;
 }
 
-/* Static placeholder while Mapbox loads - instant visual */
-.bike-map-placeholder {
-  width: 100%;
-  height: 100%;
-  background: #0a0a0f;
-  background-image: url('/images/map-placeholder.jpg');
-  background-size: cover;
-  background-position: center;
-}
-
 .bike-map-loading {
   position: absolute;
   inset: 0;
