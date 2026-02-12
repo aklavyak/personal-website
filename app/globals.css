@@ -1860,8 +1860,7 @@ body {
 
 /* Week Explorer Section - Final section, exactly 100vh */
 .week-explorer-section {
-  position: sticky;
-  bottom: 0;
+  position: relative;
   z-index: 10;
   background: var(--prime-black);
   height: 100vh;
