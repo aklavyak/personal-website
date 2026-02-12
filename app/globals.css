@@ -1860,7 +1860,8 @@ body {
 
 /* Week Explorer Section - Final section, exactly 100vh */
 .week-explorer-section {
-  position: relative;
+  position: sticky;
+  bottom: 0;
   z-index: 10;
   background: var(--prime-black);
   height: 100vh;
@@ -2264,56 +2265,66 @@ body {
   color: var(--text-primary);
 }
 
-/* Modern Control Panel - Bottom Left */
+/* Minimal Control Bar - Centered Bottom */
 .week-explorer-controls {
   position: absolute;
-  bottom: 2rem;
-  left: 2rem;
+  bottom: 2.5rem;
+  left: 50%;
+  transform: translateX(-50%);
   z-index: 10;
-  background: rgba(12, 12, 16, 0.92);
+  background: rgba(12, 12, 16, 0.88);
   backdrop-filter: blur(24px);
-  border-radius: 16px;
-  padding: 0.75rem 1.25rem;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255, 255, 255, 0.05) inset;
-  min-width: 260px;
+  border-radius: 20px;
+  padding: 0.875rem 1.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+  min-width: 320px;
+  max-width: 420px;
 }
 
-/* Time Display */
+/* Top row: time | controls | speed */
+.controls-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+
 .controls-time {
-  text-align: center;
-  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+  min-width: 0;
 }
 
 .controls-day {
-  font-size: 1.1rem;
+  font-size: 0.875rem;
   font-weight: 600;
   color: white;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.01em;
 }
 
 .controls-hour {
-  font-size: 0.7rem;
-  color: var(--text-secondary);
-  margin-top: 0.1rem;
+  font-size: 0.75rem;
+  color: var(--text-tertiary);
 }
 
 /* Button Row */
 .controls-row {
   display: flex;
   align-items: center;
-  justify-content: center;
-  gap: 0.25rem;
+  gap: 0.125rem;
 }
 
 /* Navigation Buttons */
 .nav-btn {
-  width: 32px;
-  height: 32px;
+  width: 36px;
+  height: 36px;
   border-radius: 50%;
   background: transparent;
   border: none;
-  color: var(--text-secondary);
+  color: rgba(255, 255, 255, 0.5);
   cursor: pointer;
   transition: all 0.2s ease;
   display: flex;
@@ -2322,76 +2333,67 @@ body {
 }
 
 .nav-btn:hover {
-  background: rgba(255, 255, 255, 0.1);
   color: white;
-  transform: scale(1.1);
 }
 
-.nav-btn svg {
-  transition: transform 0.2s ease;
-}
-
-.nav-btn:active svg {
+.nav-btn:active {
   transform: scale(0.9);
 }
 
 /* Play Button */
 .play-btn {
-  width: 48px;
-  height: 48px;
+  width: 44px;
+  height: 44px;
   border-radius: 50%;
-  background: linear-gradient(135deg, #00a3e0 0%, #0077b6 100%);
+  background: white;
   border: none;
   cursor: pointer;
   transition: all 0.2s ease;
-  box-shadow: 0 4px 20px rgba(0, 163, 224, 0.4);
-  margin: 0 0.35rem;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.25);
+  margin: 0 0.25rem;
   display: flex;
   align-items: center;
   justify-content: center;
-}
-
-.play-btn:not(.playing) {
-  animation: pulseGlow 2s ease-in-out infinite;
-}
-
-@keyframes pulseGlow {
-  0%, 100% { box-shadow: 0 4px 20px rgba(0, 163, 224, 0.4); }
-  50% { box-shadow: 0 4px 30px rgba(0, 163, 224, 0.6), 0 0 0 8px rgba(0, 163, 224, 0.1); }
+  color: #0a0a0f;
 }
 
 .play-btn:hover {
-  transform: scale(1.08);
-  box-shadow: 0 6px 28px rgba(0, 163, 224, 0.5);
+  transform: scale(1.06);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.35);
+}
+
+.play-btn:active {
+  transform: scale(0.96);
 }
 
 .play-btn.playing {
-  background: rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.12);
   box-shadow: none;
-  border: 2px solid var(--bike-blue);
+  color: white;
 }
 
-/* Play Icon (CSS triangle) */
-.play-icon {
-  width: 0;
-  height: 0;
-  border-left: 12px solid white;
-  border-top: 7px solid transparent;
-  border-bottom: 7px solid transparent;
-  margin-left: 3px;
+.play-btn.playing:hover {
+  background: rgba(255, 255, 255, 0.18);
 }
 
-/* Pause Icon */
-.pause-icon {
-  display: flex;
-  gap: 4px;
+/* Speed Chip */
+.speed-chip {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  padding: 0.3rem 0.6rem;
+  color: var(--text-tertiary);
+  font-size: 0.7rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+  letter-spacing: 0.02em;
 }
 
-.pause-icon span {
-  width: 4px;
-  height: 14px;
-  background: white;
-  border-radius: 2px;
+.speed-chip:hover {
+  background: rgba(255, 255, 255, 0.14);
+  color: white;
 }
 
 /* Progress Container */
@@ -2467,36 +2469,6 @@ body {
   transform: scale(1.1);
 }
 
-/* Speed Control */
-.speed-control {
-  display: flex;
-  justify-content: center;
-  margin-top: 0.4rem;
-}
-
-.speed-select {
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 8px;
-  padding: 0.4rem 0.75rem;
-  color: var(--text-secondary);
-  font-size: 0.8rem;
-  cursor: pointer;
-  transition: all 0.2s ease;
-  outline: none;
-}
-
-.speed-select:hover,
-.speed-select:focus {
-  background: rgba(255, 255, 255, 0.1);
-  border-color: rgba(255, 255, 255, 0.2);
-  color: var(--text-primary);
-}
-
-.speed-select option {
-  background: var(--prime-black);
-  color: var(--text-primary);
-}
 
 /* Week Explorer Attribution Overlay */
 .week-explorer-attribution {

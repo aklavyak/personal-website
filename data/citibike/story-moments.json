@@ -28,7 +28,7 @@
   {
     "id": "two-cities",
     "title": "Two Rush Hours",
-    "description": "By 8am, half a million people have rolled into Midtown. The Village doesn't wake up until 11.",
+    "description": "Midtown's peak hits at 8am with half a million arrivals. Three miles south, the Village doesn't peak until 11. Same city, three hours apart.",
     "mapState": {"center": [-73.99, 40.73], "zoom": 12.5, "bearing": 0, "pitch": 20},
     "highlightNeighborhoods": [],
     "flowFilter": null,

@@ -131,53 +131,57 @@ export default function WeekExplorer({ neighborhoods, flows }: WeekExplorerProps
         />
       </div>
 
-      {/* Modern Control Panel */}
+      {/* Minimal Control Bar */}
       <div className="week-explorer-controls">
-        {/* Time Display */}
-        <div className="controls-time">
-          <div className="controls-day">{DAYS[currentDay]}</div>
-          <div className="controls-hour">{formatHour(currentHour)}</div>
-        </div>
+        {/* Top row: time + controls + speed */}
+        <div className="controls-top">
+          <div className="controls-time">
+            <span className="controls-day">{DAYS[currentDay]}</span>
+            <span className="controls-hour">{formatHour(currentHour)}</span>
+          </div>
 
-        {/* Playback Controls */}
-        <div className="controls-row">
-          <button className="nav-btn" onClick={() => skipHours(-6)} aria-label="Back 6 hours">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M11 18V6l-8.5 6 8.5 6zm.5-6l8.5 6V6l-8.5 6z"/>
-            </svg>
-          </button>
-          <button className="nav-btn" onClick={goToPrev} aria-label="Previous hour">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/>
-            </svg>
-          </button>
+          <div className="controls-row">
+            <button className="nav-btn" onClick={goToPrev} aria-label="Previous hour">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
+                <polyline points="15 18 9 12 15 6" />
+              </svg>
+            </button>
+            <button
+              className={`play-btn ${isPlaying ? 'playing' : ''}`}
+              onClick={() => setIsPlaying(!isPlaying)}
+              aria-label={isPlaying ? 'Pause' : 'Play'}
+            >
+              {isPlaying ? (
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                  <rect x="6" y="4" width="4" height="16" rx="1" />
+                  <rect x="14" y="4" width="4" height="16" rx="1" />
+                </svg>
+              ) : (
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M8 5v14l11-7z" />
+                </svg>
+              )}
+            </button>
+            <button className="nav-btn" onClick={goToNext} aria-label="Next hour">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
+                <polyline points="9 18 15 12 9 6" />
+              </svg>
+            </button>
+          </div>
+
           <button
-            className={`play-btn ${isPlaying ? 'playing' : ''}`}
-            onClick={() => setIsPlaying(!isPlaying)}
-            aria-label={isPlaying ? 'Pause' : 'Play'}
+            className="speed-chip"
+            onClick={() => {
+              const speeds = [0.5, 1, 2, 4]
+              const idx = speeds.indexOf(playbackSpeed)
+              setPlaybackSpeed(speeds[(idx + 1) % speeds.length])
+            }}
           >
-            {isPlaying ? (
-              <span className="pause-icon">
-                <span></span>
-                <span></span>
-              </span>
-            ) : (
-              <span className="play-icon"></span>
-            )}
-          </button>
-          <button className="nav-btn" onClick={goToNext} aria-label="Next hour">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M8.59 16.59L10 18l6-6-6-6-1.41 1.41L13.17 12z"/>
-            </svg>
-          </button>
-          <button className="nav-btn" onClick={() => skipHours(6)} aria-label="Forward 6 hours">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M4 18l8.5-6L4 6v12zm9-12v12l8.5-6L13 6z"/>
-            </svg>
+            {playbackSpeed}×
           </button>
         </div>
 
-        {/* Progress Bar with Day Markers */}
+        {/* Progress Bar */}
         <div className="progress-container">
           <div className="progress-track" ref={progressRef} onClick={handleProgressClick}>
             <div className="progress-fill" style={{ width: `${progressPercent}%` }}>
@@ -196,20 +200,6 @@ export default function WeekExplorer({ neighborhoods, flows }: WeekExplorerProps
               </button>
             ))}
           </div>
-        </div>
-
-        {/* Speed Control */}
-        <div className="speed-control">
-          <select
-            className="speed-select"
-            value={playbackSpeed}
-            onChange={(e) => setPlaybackSpeed(Number(e.target.value))}
-          >
-            <option value={0.5}>0.5× speed</option>
-            <option value={1}>1× speed</option>
-            <option value={2}>2× speed</option>
-            <option value={4}>4× speed</option>
-          </select>
         </div>
       </div>
 
