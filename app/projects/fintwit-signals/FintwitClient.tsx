@@ -214,12 +214,12 @@ function MockBriefing() {
       <div className="fintwit-briefing-section">
         <h5>High Conviction Ideas</h5>
         <div className="fintwit-briefing-row">
-          <span className="fintwit-ticker">PLTR</span>
+          <span className="fintwit-ticker">CRWD</span>
           <span className="fintwit-briefing-meta">3 credible sources &middot; high conviction</span>
           <span className="fintwit-briefing-tag fintwit-green">strong momentum</span>
         </div>
         <div className="fintwit-briefing-row">
-          <span className="fintwit-ticker">AXON</span>
+          <span className="fintwit-ticker">TTD</span>
           <span className="fintwit-briefing-meta">2 credible sources &middot; medium conviction</span>
           <span className="fintwit-briefing-tag fintwit-green">emerging</span>
         </div>
@@ -238,11 +238,11 @@ function MockBriefing() {
       <div className="fintwit-briefing-section">
         <h5>Watchlist</h5>
         <div className="fintwit-briefing-row">
-          <span className="fintwit-ticker">RKLB</span>
+          <span className="fintwit-ticker">ABNB</span>
           <span className="fintwit-briefing-meta">top-tier source &middot; worth a look</span>
         </div>
         <div className="fintwit-briefing-row">
-          <span className="fintwit-ticker">ASTS</span>
+          <span className="fintwit-ticker">MELI</span>
           <span className="fintwit-briefing-meta">top-tier source &middot; catalyst upcoming</span>
         </div>
       </div>
