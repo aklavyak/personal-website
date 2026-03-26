@@ -337,7 +337,6 @@ body {
   padding: 1.5rem;
   transition: all var(--transition-base);
   position: relative;
-  max-width: 400px;
 }
 
 .feature-card::before {
@@ -1654,6 +1653,13 @@ body {
   z-index: 1;
 }
 
+.feature-svg-visual {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  z-index: 1;
+}
+
 /* ============================================
    NYC Bike Rhythms Project
    ============================================ */
@@ -2568,5 +2574,667 @@ body {
 
   .projects-grid {
     grid-template-columns: 1fr;
+  }
+}
+
+/* ============================================
+   Fintwit Signal Intelligence
+   ============================================ */
+
+.fintwit-page {
+  background: var(--prime-black);
+}
+
+/* Hero */
+.fintwit-hero {
+  padding: 8rem 0 4rem;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.fintwit-hero-tag {
+  display: inline-block;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: #00C853;
+  text-decoration: none;
+  margin-bottom: 1.5rem;
+  padding: 0.4rem 0.8rem;
+  border: 1px solid rgba(0, 200, 83, 0.3);
+  border-radius: 4px;
+  transition: all var(--transition-fast);
+}
+
+.fintwit-hero-tag:hover {
+  background: rgba(0, 200, 83, 0.1);
+  border-color: rgba(0, 200, 83, 0.6);
+}
+
+.fintwit-hero-title {
+  font-size: clamp(2.5rem, 5vw, 4.5rem);
+  font-weight: 300;
+  letter-spacing: -0.03em;
+  color: var(--text-primary);
+  margin-bottom: 1.5rem;
+  line-height: 1.1;
+}
+
+.fintwit-hero-subtitle {
+  font-size: 1.15rem;
+  color: var(--text-tertiary);
+  font-weight: 300;
+  line-height: 1.7;
+  max-width: 700px;
+  margin-bottom: 3rem;
+}
+
+.fintwit-hero-stats {
+  display: flex;
+  gap: 4rem;
+}
+
+.fintwit-hero-stat {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.fintwit-counter {
+  font-size: 2.5rem;
+  font-weight: 200;
+  font-family: 'SF Mono', 'Fira Code', 'Fira Mono', monospace;
+  color: var(--text-primary);
+  letter-spacing: -0.02em;
+  line-height: 1;
+}
+
+.fintwit-hero-stat-label {
+  font-size: 0.8rem;
+  color: var(--text-tertiary);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+/* Sections */
+.fintwit-section {
+  padding: 5rem 0;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.fintwit-section-dark {
+  background: rgba(255, 255, 255, 0.015);
+}
+
+.fintwit-section-title {
+  font-size: clamp(1.8rem, 3vw, 2.5rem);
+  font-weight: 300;
+  letter-spacing: -0.02em;
+  color: var(--text-primary);
+  margin-bottom: 1rem;
+}
+
+.fintwit-subsection-label {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--text-tertiary);
+  margin-bottom: 1rem;
+  font-weight: 400;
+}
+
+.fintwit-body-text {
+  font-size: 1.05rem;
+  color: var(--text-tertiary);
+  line-height: 1.8;
+  font-weight: 300;
+  margin-bottom: 1rem;
+}
+
+.fintwit-body-text.fintwit-narrow {
+  max-width: 650px;
+  margin-bottom: 2.5rem;
+}
+
+.fintwit-emphasis {
+  color: var(--text-primary);
+  font-weight: 400;
+}
+
+.fintwit-green {
+  color: #00C853;
+}
+
+.fintwit-red {
+  color: #FF5252;
+}
+
+.fintwit-muted {
+  opacity: 0.5;
+}
+
+/* Contrast Grid (problem + briefing) */
+.fintwit-contrast-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: start;
+}
+
+/* Mock Briefing */
+.fintwit-briefing {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 8px;
+  overflow: hidden;
+  font-family: 'SF Mono', 'Fira Code', 'Fira Mono', monospace;
+  font-size: 0.8rem;
+}
+
+.fintwit-briefing-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  background: rgba(0, 200, 83, 0.05);
+}
+
+.fintwit-briefing-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #00C853;
+  animation: pulse-dot 2s ease-in-out infinite;
+}
+
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+
+.fintwit-briefing-title {
+  font-size: 0.75rem;
+  color: var(--text-tertiary);
+  letter-spacing: 0.02em;
+}
+
+.fintwit-briefing-section {
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+.fintwit-briefing-section:last-child {
+  border-bottom: none;
+}
+
+.fintwit-briefing-section h5 {
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text-tertiary);
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+}
+
+.fintwit-briefing-row {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.3rem 0;
+  flex-wrap: wrap;
+}
+
+.fintwit-ticker {
+  font-weight: 600;
+  color: var(--text-primary);
+  min-width: 40px;
+}
+
+.fintwit-briefing-meta {
+  color: var(--text-tertiary);
+  font-size: 0.72rem;
+}
+
+.fintwit-briefing-tag {
+  font-size: 0.7rem;
+  margin-left: auto;
+}
+
+.fintwit-briefing-table {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.fintwit-briefing-table-row {
+  display: grid;
+  grid-template-columns: 40px 1fr 60px 60px 50px;
+  gap: 0.5rem;
+  padding: 0.3rem 0;
+  align-items: center;
+  font-size: 0.75rem;
+  color: var(--text-tertiary);
+}
+
+.fintwit-briefing-table-header {
+  font-size: 0.6rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: rgba(255,255,255,0.3);
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+  padding-bottom: 0.4rem;
+  margin-bottom: 0.2rem;
+}
+
+/* Network Visualization */
+.fintwit-network-wrap {
+  margin-top: 2rem;
+}
+
+.fintwit-network-canvas {
+  width: 100%;
+  height: 350px;
+  display: block;
+}
+
+.fintwit-network-legend {
+  display: flex;
+  gap: 1.5rem;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+.fintwit-legend-item {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.75rem;
+  color: var(--text-tertiary);
+}
+
+.fintwit-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.fintwit-dot-seed { background: #ffffff; }
+.fintwit-dot-proven { background: #00C853; }
+.fintwit-dot-established { background: #66BB6A; }
+.fintwit-dot-preliminary { background: #424242; }
+
+/* How It Works Grid (pipeline + network side by side) */
+.fintwit-how-grid {
+  display: grid;
+  grid-template-columns: 55% 45%;
+  gap: 3rem;
+  align-items: start;
+  margin-top: 1.5rem;
+}
+
+.fintwit-how-pipeline {
+  min-width: 0;
+}
+
+.fintwit-how-network {
+  position: sticky;
+  top: 6rem;
+}
+
+.fintwit-how-network .fintwit-network-canvas {
+  height: 300px;
+}
+
+.fintwit-how-network .fintwit-subsection-label {
+  margin-bottom: 0.75rem;
+}
+
+/* Pipeline */
+.fintwit-pipeline {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  position: relative;
+  margin-top: 1rem;
+}
+
+.fintwit-pipeline::before {
+  content: '';
+  position: absolute;
+  left: 19px;
+  top: 20px;
+  bottom: 20px;
+  width: 1px;
+  background: rgba(0, 200, 83, 0.2);
+}
+
+.fintwit-pipeline-step {
+  display: flex;
+  gap: 1.5rem;
+  align-items: flex-start;
+  padding: 1.25rem 0;
+  position: relative;
+}
+
+.fintwit-pipeline-number {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid rgba(0, 200, 83, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'SF Mono', 'Fira Code', monospace;
+  font-size: 0.85rem;
+  color: #00C853;
+  flex-shrink: 0;
+  background: var(--prime-black);
+  position: relative;
+  z-index: 1;
+}
+
+.fintwit-pipeline-body {
+  flex: 1;
+  padding-top: 0.25rem;
+}
+
+.fintwit-pipeline-title {
+  font-size: 1.1rem;
+  font-weight: 400;
+  color: var(--text-primary);
+  margin-bottom: 0.25rem;
+}
+
+.fintwit-pipeline-desc {
+  font-size: 0.95rem;
+  color: var(--text-tertiary);
+  font-weight: 300;
+  line-height: 1.6;
+  margin-bottom: 0.35rem;
+}
+
+.fintwit-pipeline-detail {
+  font-size: 0.8rem;
+  font-family: 'SF Mono', 'Fira Code', monospace;
+  color: #00C853;
+  opacity: 0.8;
+}
+
+/* Spread (best vs worst) */
+.fintwit-spread {
+  display: flex;
+  align-items: stretch;
+  gap: 0;
+  margin-top: 2rem;
+}
+
+.fintwit-spread-card {
+  flex: 1;
+  padding: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.fintwit-spread-best {
+  background: rgba(0, 200, 83, 0.04);
+  border: 1px solid rgba(0, 200, 83, 0.15);
+  border-radius: 12px 0 0 12px;
+}
+
+.fintwit-spread-worst {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 0 12px 12px 0;
+  border-left: none;
+}
+
+.fintwit-spread-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 0.5rem;
+  color: var(--text-tertiary);
+  font-size: 1rem;
+  background: rgba(255, 255, 255, 0.02);
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.fintwit-spread-label {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--text-tertiary);
+}
+
+.fintwit-spread-best .fintwit-spread-label {
+  color: #00C853;
+}
+
+.fintwit-spread-stat {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.fintwit-spread-stat .fintwit-counter {
+  font-size: 2rem;
+}
+
+.fintwit-spread-best .fintwit-spread-stat .fintwit-counter {
+  color: #00C853;
+}
+
+.fintwit-spread-stat span:last-child {
+  font-size: 0.8rem;
+  color: var(--text-tertiary);
+}
+
+/* Decisions Grid */
+.fintwit-decisions-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.fintwit-decision-card {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 8px;
+  padding: 1.5rem;
+}
+
+.fintwit-decision-framing {
+  max-width: 700px;
+}
+
+.fintwit-decision-title {
+  font-size: 1rem;
+  font-weight: 400;
+  color: var(--text-primary);
+  margin-bottom: 0.75rem;
+}
+
+.fintwit-decision-explanation {
+  font-size: 0.9rem;
+  color: var(--text-tertiary);
+  font-weight: 300;
+  line-height: 1.7;
+  margin-bottom: 1.25rem;
+}
+
+.fintwit-decision-comparison {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.fintwit-decision-before,
+.fintwit-decision-after {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  flex: 1;
+}
+
+.fintwit-decision-label {
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text-tertiary);
+}
+
+.fintwit-decision-value {
+  font-size: 0.85rem;
+  font-family: 'SF Mono', 'Fira Code', monospace;
+  color: var(--text-tertiary);
+  line-height: 1.4;
+}
+
+.fintwit-decision-value.fintwit-green {
+  color: #00C853;
+}
+
+.fintwit-decision-arrow {
+  color: var(--text-tertiary);
+  font-size: 1.2rem;
+  opacity: 0.4;
+}
+
+/* Improvements */
+.fintwit-improvements {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+}
+
+.fintwit-improvement {
+  padding: 1.25rem;
+  border-left: 2px solid rgba(255, 255, 255, 0.1);
+}
+
+.fintwit-improvement h4 {
+  font-size: 0.95rem;
+  font-weight: 400;
+  color: var(--text-primary);
+  margin-bottom: 0.5rem;
+}
+
+.fintwit-improvement p {
+  font-size: 0.9rem;
+  color: var(--text-tertiary);
+  font-weight: 300;
+  line-height: 1.7;
+}
+
+/* Tech Stack */
+.fintwit-stack-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.fintwit-stack-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 6px;
+}
+
+.fintwit-stack-name {
+  font-family: 'SF Mono', 'Fira Code', monospace;
+  font-size: 0.85rem;
+  color: var(--text-primary);
+}
+
+.fintwit-stack-role {
+  font-size: 0.78rem;
+  color: var(--text-tertiary);
+}
+
+/* Fintwit Responsive */
+@media (max-width: 768px) {
+  .fintwit-hero {
+    padding: 5rem 0 3rem;
+  }
+
+  .fintwit-hero-stats {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .fintwit-counter {
+    font-size: 2rem;
+  }
+
+  .fintwit-contrast-grid {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+
+  .fintwit-how-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .fintwit-how-network {
+    position: static;
+    order: -1;
+  }
+
+  .fintwit-decisions-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .fintwit-spread {
+    flex-direction: column;
+  }
+
+  .fintwit-spread-best {
+    border-radius: 12px 12px 0 0;
+  }
+
+  .fintwit-spread-worst {
+    border-radius: 0 0 12px 12px;
+    border-left: 1px solid rgba(255, 255, 255, 0.06);
+    border-top: none;
+  }
+
+  .fintwit-spread-divider {
+    padding: 0.5rem;
+    border-left: 1px solid rgba(255, 255, 255, 0.06);
+    border-right: 1px solid rgba(255, 255, 255, 0.06);
+    border-top: none;
+    border-bottom: none;
+  }
+
+  .fintwit-improvements {
+    grid-template-columns: 1fr;
+  }
+
+  .fintwit-stack-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .fintwit-network-canvas {
+    height: 250px;
+  }
+
+  .fintwit-section {
+    padding: 3.5rem 0;
+  }
+
+  .fintwit-briefing-table-row {
+    grid-template-columns: 30px 1fr 50px 50px 40px;
+    font-size: 0.65rem;
   }
 }

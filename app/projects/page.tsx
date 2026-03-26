@@ -48,6 +48,17 @@ export default function Projects() {
               <span className="featured-cta">Explore the story →</span>
             </div>
           </Link>
+
+          {/* Other Projects */}
+          <div className="projects-grid" style={{ marginTop: '2rem' }}>
+            <Link href="/projects/fintwit-signals" className="project-card">
+              <h3 className="project-card-title">The Daily Finance Brief</h3>
+              <p className="project-card-description">
+                Crowdsourcing the next trade from finance twitter
+              </p>
+              <span className="feature-link">View project →</span>
+            </Link>
+          </div>
         </div>
       </section>
     </>
