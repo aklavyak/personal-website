@@ -44,7 +44,7 @@ export default function BooksPreview() {
         <div className="section-header">
           <h2 className="section-title">Books</h2>
           <Link href="/books/" className="section-link">
-            See More →
+            All books →
           </Link>
         </div>
         <div className="bookshelf">

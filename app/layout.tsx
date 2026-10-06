@@ -12,7 +12,7 @@ const playfair = Playfair_Display({
 
 export const metadata: Metadata = {
   title: 'Aklavya | Personal Website',
-  description: 'Personal website showcasing projects and reading list',
+  description: 'Projects, Books, Photos +',
 }
 
 export default function RootLayout({

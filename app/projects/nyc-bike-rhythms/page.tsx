@@ -5,10 +5,10 @@ import type { StoryMoment } from '@/lib/types/citibike'
 
 export const metadata: Metadata = {
   title: 'City in Motion | Aklavya',
-  description: '46 million bike trips reveal how New York actually moves — a visual story built with Citi Bike data',
+  description: 'Where and when New Yorkers rode Citi Bikes in 2025, mapped from 46 million trips.',
   openGraph: {
     title: 'City in Motion',
-    description: '46 million bike trips. One year. What they reveal about New York.',
+    description: 'Where and when New Yorkers rode Citi Bikes in 2025, mapped from 46 million trips.',
     images: ['/projects/nyc-bike-rhythms/og-image.jpg']
   }
 }

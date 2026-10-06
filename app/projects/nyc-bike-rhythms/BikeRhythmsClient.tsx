@@ -52,9 +52,6 @@ export default function BikeRhythmsClient({
         <div className="hero-content-overlay">
           <p className="bike-rhythms-eyebrow">A Visual Story</p>
           <h1 className="bike-rhythms-title">City in Motion</h1>
-          <p className="bike-rhythms-subtitle">
-            46 million bike trips. One year. What they reveal about New York.
-          </p>
           <div className="bike-rhythms-scroll-hint">
             <span>Scroll to explore</span>
             <div className="scroll-arrow">↓</div>

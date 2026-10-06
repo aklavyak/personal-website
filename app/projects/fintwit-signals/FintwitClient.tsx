@@ -259,9 +259,13 @@ export default function FintwitClient() {
       <section className="fintwit-hero">
         <div className="container">
           <a href="https://github.com/aklavyak/fintwit-signals" target="_blank" rel="noopener noreferrer" className="fintwit-hero-tag">
-            View Source on GitHub ↗
+            Code on GitHub ↗
           </a>
           <h1 className="fintwit-hero-title">The Daily Finance Brief</h1>
+          <p className="fintwit-hero-subtitle">
+            Every weekday before the market opens, I get an email with the finance Twitter
+            ideas worth a closer look, ranked by whose past calls held up.
+          </p>
           <div className="fintwit-hero-stats">
             <div className="fintwit-hero-stat">
               <span className="fintwit-counter">$0.60</span>
@@ -273,7 +277,7 @@ export default function FintwitClient() {
             </div>
             <div className="fintwit-hero-stat">
               <Counter end={73} suffix="%" />
-              <span className="fintwit-hero-stat-label">best source win rate</span>
+              <span className="fintwit-hero-stat-label">win rate of the top-ranked account</span>
             </div>
           </div>
         </div>
@@ -284,22 +288,20 @@ export default function FintwitClient() {
         <div className="container">
           <div className="fintwit-contrast-grid">
             <div className="fintwit-contrast-left">
-              <h2 className="fintwit-section-title">The Problem</h2>
+              <h2 className="fintwit-section-title">Why I built it</h2>
               <p className="fintwit-body-text">
-                Every day, useful trade ideas are buried inside my Twitter timeline:
-                scattered across dozens of accounts, diluted by noise, and surfaced by
-                an algorithm that optimizes for engagement, not alpha.
+                Twitter is full of people with stock picks. The harder question is: who
+                should you actually listen to?
               </p>
               <p className="fintwit-body-text">
-                Manual browsing takes hours and still misses things. The signal is there;
-                the infrastructure to extract it isn&apos;t.
-              </p>
-              <p className="fintwit-body-text fintwit-emphasis">
-                So I built a project to give me a Daily Briefing.
+                I started tracking a group of accounts I follow that regularly make stock
+                calls, measuring how those calls held up over time. Now, instead of
+                scrolling through my feed or dozens of accounts every morning, I get one
+                briefing with the accounts, and the calls, worth paying attention to.
               </p>
             </div>
             <div className="fintwit-contrast-right">
-              <h3 className="fintwit-subsection-label">What lands in my inbox each morning</h3>
+              <h3 className="fintwit-subsection-label">Sample briefing</h3>
               <MockBriefing />
             </div>
           </div>
@@ -311,9 +313,9 @@ export default function FintwitClient() {
         <div className="container">
           <h2 className="fintwit-section-title">How It Works</h2>
           <p className="fintwit-body-text fintwit-narrow">
-            Starting from 15 accounts I&apos;ve traded from, the system maps their social
-            graph to discover new sources worth tracking. The network grows continuously
-            as new connections surface.
+            I started with 15 accounts whose ideas I&apos;ve traded on. The script looks at
+            who they retweet, quote, or mention favorably to find other accounts that keep
+            coming up, and it now tracks 45+.
           </p>
           <div className="fintwit-how-grid">
             <div className="fintwit-how-pipeline">
@@ -321,32 +323,32 @@ export default function FintwitClient() {
                 <PipelineStep
                   number={1}
                   title="Discover"
-                  description="Map the social graph of seed accounts to find new sources"
-                  detail="15 seeds → 45+ tracked, growing continuously"
+                  description="Find new accounts through the seed accounts' connections"
+                  detail="15 → 45+ accounts"
                 />
                 <PipelineStep
                   number={2}
                   title="Collect"
-                  description="Pull tweets from all tracked accounts, only fetching new content"
-                  detail="~90% reduction in API calls on daily runs"
+                  description="Pull only tweets posted since the last run"
+                  detail="~90% fewer API calls"
                 />
                 <PipelineStep
                   number={3}
                   title="Extract"
-                  description="Two-pass LLM: quick filter, then structured data for tickers, direction, and conviction"
-                  detail="6,080 tweets → 1,956 actionable calls"
+                  description="A cheap first pass drops tweets that aren't stock calls. A second pulls out the ticker, long or short, and how confident the author sounds."
+                  detail="6,080 tweets → 1,956 calls"
                 />
                 <PipelineStep
                   number={4}
                   title="Score"
-                  description="Check each call against actual market performance at 30, 60, and 90 days"
-                  detail="Bayesian composite builds source credibility over time"
+                  description="Compare each call's return to the S&P 500 after 30, 60 and 90 days"
+                  detail="An account's score firms up as its record grows (Bayesian)"
                 />
                 <PipelineStep
                   number={5}
                   title="Deliver"
-                  description="Email a morning briefing with the highest-conviction ideas, sector themes, and watchlist"
-                  detail="Daily via Resend, before market open"
+                  description="Send the email: top ideas, sector themes, watchlist"
+                  detail="Sent daily via Resend before the open"
                 />
               </div>
             </div>
@@ -364,25 +366,24 @@ export default function FintwitClient() {
           <h2 className="fintwit-section-title">Decisions That Shaped the Project</h2>
           <div className="fintwit-decisions-grid">
             <DecisionCard
-              title="Local LLM → API"
+              title="Local model → gpt-4o-mini"
               before="8-25 hours (Ollama, 5-15s/call)"
               after="~50 min, $0.60 total (gpt-4o-mini)"
-              explanation="Started with a free local model to avoid cost. But with 6,000+ tweets, 'free' meant a full day of runtime. Switching to gpt-4o-mini cut processing time by 95% for less than a dollar."
+              explanation="I started with a local model through Ollama because it was free. At 5–15 seconds a tweet, 6,000 tweets took most of a day. gpt-4o-mini did the same job in about 50 minutes for $0.60."
             />
             <DecisionCard
               title="Two-Pass Extraction"
               before="Structured extraction on all 6,080 tweets"
-              after="Filter first, extract 30%, 70% cost savings"
-              explanation="Most tweets aren't stock calls. A lightweight yes/no classifier runs first. Only the ~30% that pass get the expensive structured extraction."
+              after="Extract only the 1,956 that pass"
+              explanation="Most tweets aren't stock calls, so a cheap yes/no check runs first. Only the ~30% that pass get the full extraction, which cut cost by about 70%."
             />
           </div>
           <div className="fintwit-decision-card fintwit-decision-framing">
-            <h4 className="fintwit-decision-title">Why Idea Generation, Not Trading Signals</h4>
+            <h4 className="fintwit-decision-title">What I use it for</h4>
             <p className="fintwit-decision-explanation">
-              This tool tells me where to look, not what to buy. The scoring windows
-              (30/60/90 days) are too short for rigorous quant research, and Twitter data
-              isn&apos;t reliable enough for automated trading. But as a research filter that
-              surfaces the ideas worth spending time on each morning, it&apos;s exactly what I needed.
+              I use the email to decide which companies to read about that morning. I
+              don&apos;t trade off it directly. A 30–90 day window is too short to prove an
+              edge, and tweets are too messy by themselves to attempt an automated strategy.
             </p>
           </div>
         </div>
@@ -393,8 +394,8 @@ export default function FintwitClient() {
         <div className="container">
           <h2 className="fintwit-section-title">Does the Scoring Work?</h2>
           <p className="fintwit-body-text fintwit-narrow">
-            The whole system depends on credibility scoring actually separating
-            signal from noise. Here&apos;s what the first run showed:
+            If the scores mean anything, the top-ranked accounts should do clearly better
+            than the bottom ones. In the first run, they did:
           </p>
           <div className="fintwit-spread">
             <div className="fintwit-spread-card fintwit-spread-best">
@@ -409,7 +410,7 @@ export default function FintwitClient() {
               </div>
               <div className="fintwit-spread-stat">
                 <span className="fintwit-counter">73 calls</span>
-                <span>statistically significant (p &lt; 0.001)</span>
+                <span>p &lt; 0.001 vs. a coin flip</span>
               </div>
             </div>
             <div className="fintwit-spread-divider">
@@ -427,13 +428,13 @@ export default function FintwitClient() {
               </div>
               <div className="fintwit-spread-stat">
                 <span className="fintwit-counter">83 calls</span>
-                <span>underperforms market</span>
+                <span>trailed the S&amp;P 500</span>
               </div>
             </div>
           </div>
           <p className="fintwit-body-text" style={{ marginTop: '1.5rem', maxWidth: '650px' }}>
-            That spread is the point. The scoring weights ideas from sources with
-            proven track records, so the briefing naturally surfaces better ideas first.
+            The briefing ranks each idea by its author&apos;s record, so calls from accounts
+            like the top one come first.
           </p>
         </div>
       </section>
@@ -445,15 +446,15 @@ export default function FintwitClient() {
           <div className="fintwit-improvements">
             <div className="fintwit-improvement">
               <h4>Seed Bias</h4>
-              <p>Network reflects my corner of fintwit. Broader seeding needed to generalize.</p>
+              <p>Every tracked account traces back to 15 I picked, so the list is at least somewhat representative of my picks.</p>
             </div>
             <div className="fintwit-improvement">
               <h4>Out-of-Sample Validation</h4>
-              <p>Need to split by time period to confirm scoring holds on unseen data.</p>
+              <p>The scores were built and tested on the same period. The real test is out-of-sample: rank the accounts on one stretch of time, then freeze the scores and test whether they hold up in a later period.</p>
             </div>
             <div className="fintwit-improvement">
               <h4>Risk Adjustment</h4>
-              <p>Measures return, not the drawdown path to get there.</p>
+              <p>A call that dropped 30% before ending up 10% counts the same as one that rose steadily. Drawdown isn&apos;t measured yet.</p>
             </div>
           </div>
         </div>

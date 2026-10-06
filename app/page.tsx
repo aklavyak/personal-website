@@ -19,7 +19,7 @@ export default function Home() {
         <div className="container">
           <div className="section-header">
             <h2 className="section-title">Projects</h2>
-            <Link href="/projects" className="section-link">View All →</Link>
+            <Link href="/projects" className="section-link">All projects →</Link>
           </div>
           <div className="features-grid">
             <Link href="/projects/fintwit-signals" className="feature-card feature-card-project">
@@ -33,7 +33,7 @@ export default function Home() {
                 </svg>
               </div>
               <h3>The Daily Finance Brief</h3>
-              <p>Crowdsourcing the next trade from finance twitter</p>
+              <p>Wisdom of the Crowds: Can we crowdsource our next trade from Twitter?</p>
               <span className="feature-link">View project →</span>
             </Link>
             <Link href="/projects/nyc-bike-rhythms" className="feature-card feature-card-project">
@@ -48,7 +48,7 @@ export default function Home() {
                 </svg>
               </div>
               <h3>City in Motion</h3>
-              <p>Visualizing the 46 million Citi Bike trips from 2025</p>
+              <p>Biking: Visualizing 46 million Citi Bike trips in New York</p>
               <span className="feature-link">Explore →</span>
             </Link>
           </div>
@@ -61,7 +61,7 @@ export default function Home() {
         <div className="container">
           <div className="section-header">
             <h2 className="section-title">Visual Archive</h2>
-            <Link href="/archive" className="section-link">View All →</Link>
+            <Link href="/archive" className="section-link">All photos →</Link>
           </div>
           <div className="archive-preview-grid">
             <div className="archive-preview-item">

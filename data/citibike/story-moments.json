@@ -1,8 +1,8 @@
 [
   {
     "id": "intro",
-    "title": "The Invisible Geography",
-    "description": "125,000 bike trips happen every day. Forty-six million a year. This is how New York actually moves.",
+    "title": "125,000 trips a day",
+    "description": "That's 46 million rides in 2025. Mapped by the hour, they show which neighborhoods run on which schedule.",
     "mapState": {"center": [-73.97, 40.75], "zoom": 11.8, "bearing": 0, "pitch": 0},
     "highlightNeighborhoods": [],
     "flowFilter": null,
@@ -10,25 +10,25 @@
   },
   {
     "id": "exodus",
-    "title": "The Exodus",
-    "description": "Every weekday morning, 275,000 trips pour from Brooklyn into Manhattan. By 9am, Williamsburg has already sent half its bikes across the bridge.",
+    "title": "Into Manhattan",
+    "description": "On weekday mornings, Brooklyn riders head into Manhattan: about 1,100 trips each morning, 275,000 over the year.",
     "mapState": {"center": [-73.96, 40.71], "zoom": 12.5, "bearing": -15, "pitch": 40},
     "highlightNeighborhoods": ["BK0101", "BK0102", "BK0301"],
     "flowFilter": {
       "timePeriods": ["morning_rush"],
       "dayType": "weekday",
       "direction": "outbound",
-      "fromPrefixes": ["BK", "QN"],
+      "fromPrefixes": ["BK"],
       "toPrefixes": ["MN"]
     },
     "flowColor": "#FF9500",
-    "timeContext": "Weekday, 7-9 AM",
+    "timeContext": "Weekday, 6–10 AM",
     "statistic": {"label": "Morning Commute", "value": "275K"}
   },
   {
     "id": "two-cities",
     "title": "Two Rush Hours",
-    "description": "Midtown's peak hits at 8am with half a million arrivals. Three miles south, the Village doesn't peak until 11. Same city, three hours apart.",
+    "description": "Midtown gets its biggest wave of arrivals at 8am. Downtown, from Chelsea to the Village, arrivals peak at 5pm instead.",
     "mapState": {"center": [-73.99, 40.73], "zoom": 12.5, "bearing": 0, "pitch": 20},
     "highlightNeighborhoods": [],
     "flowFilter": null,
@@ -39,28 +39,28 @@
           "timePeriods": ["morning_rush"],
           "dayType": "weekday",
           "direction": "inbound",
-          "toPrefixes": ["MN04", "MN05"]
+          "toPrefixes": ["MN05"]
         },
         "flowColor": "#FF9500"
       },
       "right": {
-        "label": "11 AM",
+        "label": "5 PM",
         "flowFilter": {
-          "timePeriods": ["late_morning"],
+          "timePeriods": ["evening_rush"],
           "dayType": "weekday",
           "direction": "inbound",
-          "toPrefixes": ["MN02", "MN03"]
+          "toPrefixes": ["MN02", "MN03", "MN04"]
         },
         "flowColor": "#FF6B35"
       }
     },
-    "timeContext": "Weekday Morning",
-    "statistic": {"label": "Midtown Arrivals", "value": "509K"}
+    "timeContext": "Weekdays",
+    "statistic": {"label": "Midtown Arrivals at 8am", "value": "376K"}
   },
   {
     "id": "midday-divide",
-    "title": "The Midday Divide",
-    "description": "At noon, the city splits. One in six riders are tourists on day passes, not memberships. They cluster in Central Park while commuters keep it local.",
+    "title": "Lunch Hour",
+    "description": "About one in six trips is on a day pass or single ride rather than a membership. At midday those riders gather around Central Park, while members' trips stay short.",
     "mapState": {"center": [-73.97, 40.77], "zoom": 13, "bearing": 0, "pitch": 0},
     "highlightNeighborhoods": ["MN0701", "MN0801", "MN6491"],
     "flowFilter": {
@@ -70,12 +70,12 @@
     },
     "flowColor": "#FFD93D",
     "timeContext": "Weekday, 12 PM",
-    "statistic": {"label": "Day-Pass Riders", "value": "1 in 6"}
+    "statistic": {"label": "Non-Member Trips", "value": "1 in 6"}
   },
   {
     "id": "return",
-    "title": "The Return",
-    "description": "The evening rush is 61% bigger than morning. For every two people who biked in, three are biking out.",
+    "title": "The Ride Home",
+    "description": "The evening rush is 61% bigger than the morning rush. More people ride home across the bridges than rode in: 439,000 evening trips from Manhattan to Brooklyn and Queens over the year, against 331,000 the other way in the morning.",
     "mapState": {"center": [-73.98, 40.72], "zoom": 12, "bearing": 10, "pitch": 35},
     "highlightNeighborhoods": ["BK0102", "BK0202", "BK0101"],
     "flowFilter": {
@@ -92,7 +92,7 @@
   {
     "id": "friday-night",
     "title": "After Dark",
-    "description": "At midnight, the East Village takes the lead with 220,000 arrivals, more than anywhere else. The bars close at 4am. The bikes keep moving.",
+    "description": "From 10pm to 2am on weeknights, the East Village gets more arrivals than any other neighborhood: 146,000 over the year.",
     "mapState": {"center": [-73.985, 40.725], "zoom": 13, "bearing": 15, "pitch": 30},
     "highlightNeighborhoods": ["MN0303", "BK0102", "MN0302"],
     "flowFilter": {
@@ -102,13 +102,13 @@
       "toPrefixes": ["MN03", "BK01"]
     },
     "flowColor": "#3498DB",
-    "timeContext": "Weeknight, 8 PM - 2 AM",
-    "statistic": {"label": "Night Arrivals", "value": "220K"}
+    "timeContext": "Weeknights, 10 PM – 2 AM",
+    "statistic": {"label": "Night Arrivals", "value": "146K"}
   },
   {
     "id": "weekend",
-    "title": "Weekend Transformation",
-    "description": "One in four trips happens on the weekend. But they go everywhere weekdays don't: parks, waterfronts, brunch spots.",
+    "title": "Weekends",
+    "description": "Saturday and Sunday get about a quarter of all trips, so a weekend day is a little quieter than a weekday. The rides go to different places, though: parks, the waterfront, brunch.",
     "mapState": {"center": [-73.97, 40.75], "zoom": 12, "bearing": 0, "pitch": 20},
     "highlightNeighborhoods": ["BK0602", "BK0201", "MN0202"],
     "flowFilter": {
@@ -122,8 +122,8 @@
   },
   {
     "id": "gap",
-    "title": "The Gap",
-    "description": "Citi Bike covers Manhattan, Brooklyn, and Queens. The Bronx has just 50 stations. Staten Island has none. The bright spots show where the network actually reaches.",
+    "title": "Where It Doesn't Reach",
+    "description": "Citi Bike has 4,495 stations, but 97% of trips start or end in Manhattan, Brooklyn or Queens. The Bronx gets under 3%. Staten Island has no stations at all.",
     "mapState": {"center": [-73.94, 40.78], "zoom": 10.5, "bearing": 0, "pitch": 0},
     "highlightNeighborhoods": [],
     "flowFilter": {

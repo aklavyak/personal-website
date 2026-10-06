@@ -1578,6 +1578,14 @@ body {
   color: #FF9500;
 }
 
+.featured-project-card-green .featured-project-visual {
+  background: linear-gradient(135deg, rgba(0, 200, 83, 0.06) 0%, rgba(0, 200, 83, 0.01) 100%);
+}
+
+.featured-project-card-green:hover .featured-cta {
+  color: #00C853;
+}
+
 @media (max-width: 768px) {
   .featured-project-card {
     grid-template-columns: 1fr;
